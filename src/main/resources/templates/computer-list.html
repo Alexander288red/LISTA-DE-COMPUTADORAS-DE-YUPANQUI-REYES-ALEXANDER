@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Computadoras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Fuentes bonitas -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Poppins', sans-serif; /* Fuente moderna */
+            background: linear-gradient(135deg, #c1e0ff, #f0f8ff); /* Fondo degradado suave */
+            margin: 0;
+            padding: 20px;
+            color: #333; /* Texto oscuro */
+            animation: fadeIn 1s ease-out; /* Animación de entrada */
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc; /* Azul brillante */
+            margin-bottom: 20px;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra en el texto */
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            animation: scaleUp 1s ease-out; /* Animación de escalado para la tabla */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        th {
+            background-color: #007acc; /* Azul oscuro */
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #ffebcc; /* Amarillo claro */
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007acc;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #005b99;
+            text-decoration: underline;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.95);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Lista de Computadoras</h1>
+    <a href="/computers/new">Agregar Nueva Computadora</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Procesador</th>
+                <th>RAM (GB)</th>
+                <th>Almacenamiento (GB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="computer : ${computers}">
+                <td th:text="${computer.id}"></td>
+                <td th:text="${computer.brand}"></td>
+                <td th:text="${computer.model}"></td>
+                <td th:text="${computer.processor}"></td>
+                <td th:text="${computer.ramSize}"></td>
+                <td th:text="${computer.storageSize}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
